@@ -10,4 +10,8 @@ class TaskManagerApp < Sinatra::Base
     erb :index
   end
 
+  get '/tasks/new' do
+    erb :new
+  end
+
 end
