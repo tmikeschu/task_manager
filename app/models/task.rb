@@ -7,4 +7,8 @@ class Task
     @description = task_params["description"]  
   end
 
+  def save
+    
+  end
+
 end
