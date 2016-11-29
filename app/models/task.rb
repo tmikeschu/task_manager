@@ -66,4 +66,6 @@ What are params? Where do they come from?
 
 Check out your routes. Why do we need two routes each for creating a new Task and editing an existing Task?
   Edit manipulates an existing SQL id number, new creates a newly incremented id.
+  Two HTTP verbs are required. One to update one to show the update.
+  1. get the form, 2. post the data.
 =end
