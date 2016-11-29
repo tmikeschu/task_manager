@@ -34,4 +34,36 @@ class Task
     database
   end
 
+  def self.update(id, task_params)
+    database.execute("UPDATE tasks
+                     SET title = ?,
+                         description = ?
+                     WHERE id = ?;",
+                     task_params[:title],
+                     task_params[:description],
+                     id)
+    Task.find(id)
+  end
+
+  def self.destroy(id)
+    database.execute("DELETE FROM tasks WHERE id = ?;", id)
+  end
+
 end
+
+=begin Questions for review
+Define CRUD. 
+  Create Read Update Delete
+
+Why do we use set method_override: true? 
+  This is a workaround HTML forms' inability to handle PUT requests. It turns the POST form into a PUT
+
+Explain the difference between value and name in this line: <input type='text' name='task[title]' value="<%= @task.title %>"/>.
+  Value is what displays on the view, the name is how the input will be stored.
+
+What are params? Where do they come from?
+  Params are a hash-like string of data provided by the user.
+
+Check out your routes. Why do we need two routes each for creating a new Task and editing an existing Task?
+  Edit manipulates an existing SQL id number, new creates a newly incremented id.
+=end
